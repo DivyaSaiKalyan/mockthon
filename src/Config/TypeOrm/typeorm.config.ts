@@ -7,5 +7,5 @@ export const TypeOrmConfig: TypeOrmInterface = {
   port: 3306,
   username: 'root',
   password: 'root',
-  database: 'mockthon'
+  database: 'hospital'
 };

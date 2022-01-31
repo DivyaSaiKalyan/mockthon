@@ -301,7 +301,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;string&gt;</code>
+                        <b>Returns : </b>    <code>unknown</code>
 
                     </div>
                     <div class="io-description">
@@ -420,7 +420,7 @@ export class jwtServiceClass {
   }
 
   /**This is delete token method */
-  async deleteToken(response: Response): Promise&lt;string&gt; {
+  async deleteToken(response: Response) {
     response.clearCookie(&#x27;jwt&#x27;);
     return &#x27;logout success&#x27;;
   }

@@ -35,7 +35,8 @@ export class UserService {
     login.username = data.username;
     login.password = data.password;
     login.role = data.role;
-    login.createdBy = data.name;
+    login.createdBy = data.firstname;
+    user.createdBy = data.firstname;
     user.login = login;
     const newData = Object.assign(user, data);
     return await this.userRepository.save(newData);
@@ -55,12 +56,14 @@ rn successimport { userDto } from './dto/user.dto';
       username: data.username
     });
     const match = await bcrypt.compare(data.password, getUser.password);
-    if (!getUser || !match) {
+    if (!getUser || match == false) {
       throw new UnauthorizedException('incorrect credentials');
     }
     const jwt = await this.jwtserviceClass.CreateJwtToken(getUser);
     response.cookie('jwt', jwt, { httpOnly: true });
     GlobalAccess.role = getUser.role;
+    console.log(GlobalAccess.role);
+
     const { password, ...result } = getUser;
     return result;
   }
@@ -92,7 +95,7 @@ rn successimport { userDto } from './dto/user.dto';
    * @param response
    * @returns
    */
-  async logoutUser(response: Response): Promise<string> {
+  async logoutUser(response: Response) {
     await this.jwtserviceClass.deleteToken(response);
     return 'logout success';
   }

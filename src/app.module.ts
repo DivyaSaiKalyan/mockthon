@@ -5,6 +5,15 @@ import { AppService } from './app.service';
 import { TypeOrmConfig } from './Config/TypeOrm/typeorm.config';
 import { LoggerMiddleware } from './Common/MiddleWare/logger.middleware';
 import { UserModule } from './Modules/user/user.module';
+import { User } from './Entities/user.entity';
+import { Login } from './Entities/login.entity';
+import { staffInfo } from './Entities/staff-info.entity';
+import { StaffCategory } from './Entities/staffCategory.entity';
+import { OperationTheaterInfo } from './Entities/operationTheaterInfo.entity';
+import { BookingOperationTheater } from './Entities/Booking.entity';
+import { StaffinfoModule } from './Modules/staffinfo/staffinfo.module';
+import { ConfigureModule } from './Modules/configure/configure.module';
+import { BookingModule } from './Modules/booking/booking.module';
 
 @Module({
   imports: [
@@ -15,10 +24,21 @@ import { UserModule } from './Modules/user/user.module';
       username: TypeOrmConfig.username,
       password: TypeOrmConfig.password,
       database: TypeOrmConfig.database,
-      autoLoadEntities: true,
+      entities: [
+        staffInfo,
+        User,
+        Login,
+        StaffCategory,
+        OperationTheaterInfo,
+        BookingOperationTheater
+      ],
+      //autoLoadEntities: true,
       synchronize: true
     }),
-    UserModule
+    UserModule,
+    ConfigureModule,
+    StaffinfoModule,
+    BookingModule
   ],
   controllers: [AppController],
   providers: [AppService]

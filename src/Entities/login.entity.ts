@@ -18,26 +18,32 @@ const bcrypt = require('bcryptjs');
  */
 @Entity()
 export class Login extends Maintenance {
+  /**This is primary generated column */
   @PrimaryGeneratedColumn()
   id: number;
 
+  /**username column */
   @Column({ unique: true })
   @ApiProperty()
   username: string;
 
+  /**password column */
   @Column()
   @ApiProperty()
   password: string;
 
+  /**password column */
   @Column()
   @ApiProperty()
   role: string;
 
+  /**this method is used to hash the password*/
   @BeforeInsert()
   async strongPassword() {
     this.password = await bcrypt.hash(this.password, 10);
   }
 
+  /**one to one  relation */
   @OneToOne(() => User, (user) => user.login)
   @JoinColumn()
   user: User;

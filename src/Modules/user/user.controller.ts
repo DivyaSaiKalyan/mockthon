@@ -29,7 +29,7 @@ export class UserController {
    * @returns save data in database
    */
   @Post('addUser')
-  async CreateUser(@Body(ValidationPipe) data: userDto) {
+  async CreateUser(@Body() data: userDto) {
     return await this.userService.CreateUser(data);
   }
 
@@ -54,7 +54,9 @@ intiels are true return success
    * @returns
    */
   @Delete('logoutUser')
-  async logoutUser(response: Response): Promise<string> {
+  async logoutUser(
+    @Res({ passthrough: true }) response: Response
+  ): Promise<string> {
     return await this.userService.logoutUser(response);
   }
 }

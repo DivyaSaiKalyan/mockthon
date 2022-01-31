@@ -28,7 +28,7 @@ export class jwtServiceClass {
   }
 
   /**This is delete token method */
-  async deleteToken(response: Response): Promise<string> {
+  async deleteToken(response: Response) {
     response.clearCookie('jwt');
     return 'logout success';
   }

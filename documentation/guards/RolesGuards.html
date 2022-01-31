@@ -114,7 +114,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/Common/Guards/roles.guards.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/Common/Guards/roles.guards.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -179,8 +179,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="14"
-                            class="link-to-prism">src/Common/Guards/roles.guards.ts:14</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="16"
+                            class="link-to-prism">src/Common/Guards/roles.guards.ts:16</a></div>
                 </td>
             </tr>
 
@@ -239,6 +239,8 @@
 import { Reflector } from &#x27;@nestjs/core&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
 import { GlobalAccess } from &#x27;../Access/global.access&#x27;;
+import { Admin } from &#x27;../constant/role.constant&#x27;;
+import { recption, Doctor } from &#x27;./../constant/role.constant&#x27;;
 
 /**
  * This is a roles guards file this file is used to protuct the apis
@@ -258,11 +260,15 @@ export class RolesGuards implements CanActivate {
       return true;
     }
     /**If role is admin this method is worked */
-    if (roles.includes(&#x27;admin&#x27;) &amp;&amp; GlobalAccess.role &#x3D;&#x3D;&#x3D; &#x27;admin&#x27;) {
+    if (roles.includes(Admin) &amp;&amp; GlobalAccess.role &#x3D;&#x3D;&#x3D; Admin) {
       return true;
     }
-    /**If role is user this method is worked */
-    if (roles.includes(&#x27;user&#x27;) &amp;&amp; GlobalAccess.role &#x3D;&#x3D;&#x3D; &#x27;user&#x27;) {
+    /**If role is recption this method is worked */
+    if (roles.includes(recption) &amp;&amp; GlobalAccess.role &#x3D;&#x3D;&#x3D; recption) {
+      return true;
+    }
+    /**If role is Doctor this method is worked */
+    if (roles.includes(Doctor) &amp;&amp; GlobalAccess.role &#x3D;&#x3D;&#x3D; Doctor) {
       return true;
     }
     /**return the output */

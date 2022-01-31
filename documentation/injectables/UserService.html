@@ -298,8 +298,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="73"
-                            class="link-to-prism">src/Modules/user/user.service.ts:73</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">src/Modules/user/user.service.ts:74</a></div>
                 </td>
             </tr>
 
@@ -371,8 +371,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="83"
-                            class="link-to-prism">src/Modules/user/user.service.ts:83</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">src/Modules/user/user.service.ts:84</a></div>
                 </td>
             </tr>
 
@@ -444,8 +444,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="53"
-                            class="link-to-prism">src/Modules/user/user.service.ts:53</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">src/Modules/user/user.service.ts:54</a></div>
                 </td>
             </tr>
 
@@ -543,8 +543,8 @@ rn successimport { userDto } from &#39;./dto/user.dto&#39;;</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="95"
-                            class="link-to-prism">src/Modules/user/user.service.ts:95</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="96"
+                            class="link-to-prism">src/Modules/user/user.service.ts:96</a></div>
                 </td>
             </tr>
 
@@ -584,7 +584,7 @@ rn successimport { userDto } from &#39;./dto/user.dto&#39;;</p>
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;string&gt;</code>
+                        <b>Returns : </b>    <code>unknown</code>
 
                     </div>
                     <div class="io-description">
@@ -637,7 +637,8 @@ export class UserService {
     login.username &#x3D; data.username;
     login.password &#x3D; data.password;
     login.role &#x3D; data.role;
-    login.createdBy &#x3D; data.name;
+    login.createdBy &#x3D; data.firstname;
+    user.createdBy &#x3D; data.firstname;
     user.login &#x3D; login;
     const newData &#x3D; Object.assign(user, data);
     return await this.userRepository.save(newData);
@@ -694,7 +695,7 @@ rn successimport { userDto } from &#x27;./dto/user.dto&#x27;;
    * @param response
    * @returns
    */
-  async logoutUser(response: Response): Promise&lt;string&gt; {
+  async logoutUser(response: Response) {
     await this.jwtserviceClass.deleteToken(response);
     return &#x27;logout success&#x27;;
   }
